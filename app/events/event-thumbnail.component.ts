@@ -1,4 +1,9 @@
-<div>
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'event-thumbnail',
+  template: `
+    <div>
     <h1>Upcoming Angular 2 Events</h1>
     <hr/>
     <div class="well hoverwell thumbnail">
@@ -9,10 +14,20 @@
       <span>{{event.time}}</span><br>
       <span>Price:</span>
       <!-- we add the price pipe in the pipes section -->
-      <span>${{event.price}}</span><br>
+      <span>\${{event.price}}</span><br>
       <span>Location:</span>
       <span>{{event.location.address}}</span>
       <span>&nbsp;</span>
       <span>{{event.location.city}}, {{event.location.country}}</span>
     </div>
   </div>
+  `
+})
+export class EventThumbnailComponent {
+  @Input() event: any;
+  
+  
+  constructor() {
+  }  
+  
+}
