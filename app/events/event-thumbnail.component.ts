@@ -3,10 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'event-thumbnail',
   template: `
-    <div>
-    <h1>Upcoming Angular 2 Events</h1>
-    <hr/>
-    <div class="well hoverwell thumbnail">
+    <div (click)= class="well hoverwell thumbnail">
       <h2>{{event.name}}</h2>
       <span>Date:</span>
       <span>{{event.date}}</span><br>
@@ -20,12 +17,10 @@ import { Component, Input } from '@angular/core';
       <span>&nbsp;</span>
       <span>{{event.location.city}}, {{event.location.country}}</span>
     </div>
-  </div>
   `
 })
 export class EventThumbnailComponent {
   @Input() event: any;
-  
   
   constructor() {
   }  

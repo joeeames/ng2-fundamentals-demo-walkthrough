@@ -3,7 +3,13 @@ import { EventThumbnailComponent } from './event-thumbnail.component';
 
 @Component({
   selector: 'events-list',
-  template: `<event-thumbnail [event]="event1"></event-thumbnail>`,
+  template: `
+  <div>
+    <h1>Upcoming Angular 2 Events</h1>
+    <hr/>
+    <event-thumbnail [event]="event1"></event-thumbnail>
+  </div>  
+  `,
   directives: [EventThumbnailComponent]
 })
 export class EventsListComponent {
