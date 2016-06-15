@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventsListComponent } from './events/events-list.component';
 import { NavBarComponent } from './nav/navbar.component';
+import { EventService } from './events/shared/event.service';
 
 @Component({
   selector: 'events-app',
@@ -11,6 +12,9 @@ import { NavBarComponent } from './nav/navbar.component';
   directives: [
     EventsListComponent,
     NavBarComponent
+  ],
+  providers: [
+    EventService
   ]
 })
 export class AppComponent {

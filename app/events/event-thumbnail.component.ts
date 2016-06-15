@@ -4,9 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'event-thumbnail',
   template: `
     <div (click)="handleClick()"
-        (mouseenter)="enter()"
-        (mouseleave)="leave()"
-       class="well thumbnail" [style.background-color]="bgColor">
+       class="well thumbnail hoverwell">
       <h2 [innerText]="event.name"></h2>
       <span>Date:</span>
       <span>{{event.date}}</span><br>
@@ -26,22 +24,10 @@ export class EventThumbnailComponent {
   @Input() event: any;
   @Output() eventClick = new EventEmitter;
   
-  regularBgColor = "#4e5d6c"
-  hoverBgColor = "#485563" 
-  bgColor;
   
   constructor() {
-    this.bgColor = this.regularBgColor;
   } 
   
-  enter() {
-    this.bgColor = this.hoverBgColor;
-  }
-  
-  leave() {
-    this.bgColor = this.regularBgColor;
-  }
-
   handleClick() {
     this.eventClick.emit(this.event);
   }
