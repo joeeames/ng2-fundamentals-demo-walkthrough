@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EventsListComponent } from './events/events-list.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventService } from './events/shared/event.service';
+import { ToastrService } from './common/toastr.service';
 
 @Component({
   selector: 'events-app',
@@ -14,7 +15,8 @@ import { EventService } from './events/shared/event.service';
     NavBarComponent
   ],
   providers: [
-    EventService
+    EventService,
+    ToastrService
   ]
 })
 export class AppComponent {
