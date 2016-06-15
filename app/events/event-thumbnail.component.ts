@@ -21,13 +21,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class EventThumbnailComponent {
   @Input() event: any;
-  @Output() clicked = new EventEmitter;
+  @Output() eventClick = new EventEmitter;
   
   constructor() {
   } 
 
   handleClick() {
-    this.clicked.emit(null);
+    this.eventClick.emit(this.event);
   }
   
 }

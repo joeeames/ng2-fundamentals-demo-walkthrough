@@ -7,7 +7,7 @@ import { EventThumbnailComponent } from './event-thumbnail.component';
   <div>
     <h1>Upcoming Angular 2 Events</h1>
     <hr/>
-    <event-thumbnail (eventClick)="eventClicked(event.name)" [event]="event1"></event-thumbnail>
+    <event-thumbnail (eventClick)="eventClicked($event)" [event]="event1"></event-thumbnail>
   </div>  
   `,
   directives: [EventThumbnailComponent]
@@ -31,7 +31,7 @@ export class EventsListComponent {
   }  
 
   eventClicked(name) {
-    console.log(name + 'event clicked');
+    console.log(name, 'event clicked');
   }
   
 }
