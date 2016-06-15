@@ -1,16 +1,22 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class EventService {
   getEvents() {
+    // THIS can work instead of an EventEmitter. Basically the same thing
+    // var s = new Subject();
+    // setTimeout( () => {    
+    //   s.next(EVENTS);
+    // }, 100);
+    // return s;
+    
+    
     var emitter = new EventEmitter(true);
     setTimeout(() => {
       emitter.emit(EVENTS);
     }, 100);
     return emitter;
-    
-    // return Observable.from(EVENTS)
   }
 }
 
