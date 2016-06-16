@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router-deprecated';
 
 @Component({
-  moduleId: module.id,
   selector: 'nav-bar',
-  templateUrl: 'navbar.component.html'
+  templateUrl: '/app/nav/navbar.component.html',
+  directives: [
+    RouterLink
+  ]
 })
 export class NavBarComponent {
   constructor() { }

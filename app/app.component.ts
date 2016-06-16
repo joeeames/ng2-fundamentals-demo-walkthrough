@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
 import { EventsListComponent } from './events/events-list.component';
 import { CreateEventComponent } from './events/create-event.component';
 import { NavBarComponent } from './nav/navbar.component';
@@ -9,18 +10,24 @@ import { ToastrService } from './common/toastr.service';
   selector: 'events-app',
   template: `
     <nav-bar></nav-bar>
-    <create-event></create-event>
+    <router-outlet></router-outlet>
   `,
   directives: [
     EventsListComponent,
     CreateEventComponent,
-    NavBarComponent
+    NavBarComponent,
+    ROUTER_DIRECTIVES
   ],
   providers: [
     EventService,
-    ToastrService
+    ToastrService,
+    ROUTER_PROVIDERS
   ]
 })
+@RouteConfig([
+  {path: '/events', name: 'Events', component: EventsListComponent, useAsDefault: true},
+  {path: '/events/new', name: 'CreateEvent', component: CreateEventComponent}
+])
 export class AppComponent {
   
   constructor() {}
