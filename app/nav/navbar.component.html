@@ -25,7 +25,10 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a *ngIf="auth.isAuthenticated()" class="navbar-brand" [routerLink]="['Profile']">Welcome John</a>
+            <a *ngIf="auth.isAuthenticated()" class="navbar-brand" 
+              [routerLink]="['Profile']">
+                Welcome {{auth.currentUser.firstName}}
+            </a>
             <a *ngIf="!auth.isAuthenticated()" class="" [routerLink]="['Login']">Login</a>
           </li>
         </ul>

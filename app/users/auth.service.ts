@@ -27,6 +27,7 @@ export class AuthService {
   }
 
   updateCurrentUser(firstName: string, lastName: string) {
+    console.log('updating', firstName, lastName);
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
   }

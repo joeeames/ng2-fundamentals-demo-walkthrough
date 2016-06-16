@@ -4,12 +4,12 @@
     <form autocomplete="off" #profileForm="ngForm" (ngSubmit)="saveProfile(profileForm.value)">
         <div class="form-group" >
             <label for="firstName">First Name:</label>
-            <input id="firstName" type="text" ngControl="firstName" 
+            <input id="firstName" type="text" ngControl="firstName" [(ngModel)]="auth.currentUser.firstName"
             class="form-control" placeholder="First Name..." />
         </div>
         <div class="form-group" >
             <label for="lastName">Last Name:</label>
-            <input id="lastName" type="text" ngControl="lastName"
+            <input id="lastName" type="text" ngControl="lastName" [(ngModel)]="auth.currentUser.lastName"
             class="form-control" placeholder="Last Name..." />
         </div>
         
