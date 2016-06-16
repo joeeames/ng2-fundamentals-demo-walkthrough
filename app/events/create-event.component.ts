@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router-deprecated';
 
 @Component({
   selector: 'create-event',
@@ -6,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   
 })
 export class CreateEventComponent implements OnInit {
-  constructor() {
+  constructor(private router : Router) {
     
   }
   
   ngOnInit() {
     
+  }
+  
+  cancel() {
+    this.router.navigate(['Events']);
   }
 }
