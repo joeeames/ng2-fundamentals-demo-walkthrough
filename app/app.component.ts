@@ -3,8 +3,12 @@ import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/route
 import { EventsComponent } from './events/events.component';
 import { ProfileComponent } from './users/profile.component';
 import { NavBarComponent } from './nav/navbar.component';
+import { LoginComponent } from './users/login.component';
+
+
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
+import { AuthService } from './users/auth.service';
 
 @Component({
   selector: 'events-app',
@@ -19,12 +23,14 @@ import { ToastrService } from './common/toastr.service';
   providers: [
     EventService,
     ToastrService,
+    AuthService,
     ROUTER_PROVIDERS
   ]
 })
 @RouteConfig([
   {path: '/events/...', name: 'Events', component: EventsComponent, useAsDefault: true},
-  {path: '/profile', name: 'Profile', component: ProfileComponent}
+  {path: '/profile', name: 'Profile', component: ProfileComponent},
+  {path: '/login', name: 'Login', component: LoginComponent}
 ])
 export class AppComponent {
   

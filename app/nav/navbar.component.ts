@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router-deprecated';
+import { AuthService } from '../users/auth.service';
 
 @Component({
   selector: 'nav-bar',
@@ -9,7 +10,9 @@ import { RouterLink } from '@angular/router-deprecated';
   ]
 })
 export class NavBarComponent {
-  constructor() { }
+  constructor(private auth: AuthService) { 
+    
+  }
 
 
 }

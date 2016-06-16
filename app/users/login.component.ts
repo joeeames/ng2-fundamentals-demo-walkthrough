@@ -3,17 +3,18 @@ import { Router } from '@angular/router-deprecated';
 import { AuthService } from './auth.service';
 
 @Component({
-  selector: 'user-profile',
-  templateUrl: 'app/users/profile.component.html',
+  selector: 'login',
+  templateUrl: 'app/users/login.component.html',
 })
-export class ProfileComponent {
+export class LoginComponent {
   
   constructor(private router: Router,
     private auth: AuthService) {
   }
   
-  saveProfile(formValues) {
-    this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
+  login(formValues) {
+    this.auth.loginUser(formValues.userName, formValues.password);
+    this.router.navigate(['Events']);
   }
   
   cancel() {
