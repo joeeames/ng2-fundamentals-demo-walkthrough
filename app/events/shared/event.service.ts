@@ -18,6 +18,15 @@ export class EventService {
     }, 100);
     return emitter;
   }
+  
+  getEvent(id: number) {
+    var emitter = new EventEmitter(true);
+    setTimeout(() => {
+      let found = EVENTS.find(event => event.id === id)
+      emitter.emit(found);
+    }, 100);
+    return emitter;
+  }
 }
 
 const EVENTS = [
