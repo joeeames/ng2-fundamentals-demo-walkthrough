@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EventsListComponent } from './events/events-list.component';
+import { CreateEventComponent } from './events/create-event.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
@@ -8,10 +9,11 @@ import { ToastrService } from './common/toastr.service';
   selector: 'events-app',
   template: `
     <nav-bar></nav-bar>
-    <events-list></events-list>
+    <create-event></create-event>
   `,
   directives: [
     EventsListComponent,
+    CreateEventComponent,
     NavBarComponent
   ],
   providers: [

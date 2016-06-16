@@ -1,0 +1,49 @@
+<h1>New Event</h1>
+<hr>
+<div class="col-md-6">
+  <form  autocomplete="off" >
+    <div class="form-group" >
+      <label for="eventName">Event Name:</label>
+      <input id="eventName" type="text"  class="form-control" placeholder="Name of your event..." />
+    </div>
+    <div class="form-group" >
+      <label for="eventDate">Event Date:</label>
+      <div style="position:relative">
+        <input id="eventDate" type="text"   
+            class="form-control" placeholder="format (mm/dd/yyyy)..." />
+      </div>
+    </div>
+    <div class="form-group" >
+      <label for="eventTime">Event Time:</label>
+      <input id="eventTime" type="text"  class="form-control" placeholder="start and end time..." />
+    </div>
+    <div class="form-group" >
+      <label for="eventPrice">Event Price:</label>
+      <input id="eventPrice" type="text"  type="number" class="form-control" placeholder="event price..." />
+    </div>
+    <fieldset >
+      <div class="form-group" >
+        <label for="address">Event Location:</label>
+        <input id="address" type="text"  class="form-control" placeholder="Address of event..." />
+      </div>
+      <div class="row">
+        <div class="col-md-6" >
+          <input id="city" type="text"  class="form-control" placeholder="City..." />
+        </div>
+        <div class="col-md-6" >
+          <input id="country" type="text"  class="form-control" placeholder="Country..." />
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group" >
+      <label for="imageUrl">Image:</label>
+      <input id="imageUrl" type="text"  class="form-control" placeholder="url of image..." />
+    </div>
+
+    <img  />
+    <br />
+    <br />
+    <button type="submit"  class="btn btn-primary">Save</button>
+    <button type="button"  class="btn btn-default">Cancel</button>
+  </form>
+</div>
