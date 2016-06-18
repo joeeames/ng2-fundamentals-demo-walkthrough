@@ -1,0 +1,39 @@
+<div style="padding-left:20px; padding-right:20px">
+  <img *ngIf="!!event" [src]="event?.imageUrl" [alt]="event?.name" height="100">
+
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{event?.name | uppercase}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Date:</strong> {{event?.date}}</div>
+      <div><strong>Time:</strong> {{event?.time}}</div>
+      <div><strong>Price:</strong> {{event?.price | currency:'USD':true}}</div>
+    </div>
+    <div class="col-md-6">
+      <address>
+        <strong>Address:</strong><br />
+        {{event?.location?.address}}<br />
+        {{event?.location?.city}}, {{event?.location?.country}}
+      </address>
+    </div>
+  </div>
+
+  <hr/>
+  
+  <div class="row" >
+    <div class="col-md-2">
+      <h3 style="margin:0">Sessions</h3>
+    </div>
+    
+    <div class="col-md-2">
+      <a (click)="addSession()">Add Session</a>
+    </div>
+  </div>
+  
+  <session-list *ngIf="!addMode && event?.sessions" [sessions]="event?.sessions"></session-list>
+  <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancel()"></create-session>
+</div>

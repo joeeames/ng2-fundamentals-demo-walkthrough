@@ -1,10 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {RouterLink} from '@angular/router-deprecated';
 
 @Component({
   selector: 'event-thumbnail',
   template: `
-    <div (click)="handleClick()" class="well hoverwell thumbnail">
-      <h2>{{event.name}}</h2>
+    <div [routerLink]="['Event', {id: event.id}]"
+       class="well thumbnail hoverwell">
+      <h2 [innerText]="event.name"></h2>
       <span>Date:</span>
       <span>{{event.date}}</span><br>
       <span>Time:</span>
@@ -17,17 +19,17 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <span>&nbsp;</span>
       <span>{{event.location.city}}, {{event.location.country}}</span>
     </div>
-  `
+  `,
+  directives: [
+    RouterLink
+  ]
 })
 export class EventThumbnailComponent {
   @Input() event: any;
   @Output() eventClick = new EventEmitter;
   
+  
   constructor() {
   } 
-
-  handleClick() {
-    this.eventClick.emit(this.event);
-  }
   
 }

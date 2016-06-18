@@ -1,0 +1,49 @@
+<div class="col-md-12"><h3>Create Session</h3></div>
+<div class="col-md-6">
+  <form autocomplete="off" #newSessionForm="ngForm" (ngSubmit)="saveSession(newSessionForm.value)">
+    <div class="form-group" [ngClass]="{ 'error' : !nameControl.valid && nameControl.dirty }" required>
+      <label for="sessionName">Session Name:</label>
+      <em *ngIf="!nameControl.valid && nameControl.dirty">Required</em>
+      <input id="sessionName" type="text" ngControl="name" #nameControl="ngForm" class="form-control" required placeholder="session name..." />
+    </div>
+    <div class="form-group" [ngClass]="{ 'error' : !presenterControl.valid && presenterControl.dirty }">
+      <label for="eventDate">Presenter:</label>
+      <em *ngIf="!presenterControl.valid && presenterControl.dirty">Required</em>
+      <div style="position:relative">
+        <input id="presenter" type="text" ngControl="presenter" #presenterControl="ngForm" class="form-control" required placeholder="presenter..." />
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'error' : !durationControl.valid && durationControl.touched }">
+      <label for="duration">Duration:</label>
+      <em *ngIf="!durationControl.valid && durationControl.touched">Required</em>
+      <select ngControl="duration" #durationControl="ngForm" class="form-control" required>
+        <option value="">select duration...</option>
+        <option value="1">Half Hour</option>
+        <option value="2">1 Hour</option>
+        <option value="3">Half Day</option>
+        <option value="4">Full Day</option>
+      </select>
+    </div>
+    <div class="form-group" [ngClass]="{ 'error' : !levelControl.valid && levelControl.touched }">
+      <label for="level">Level:</label>
+      <em *ngIf="!levelControl.valid && levelControl.touched">Required</em>
+      <select ngControl="level" #levelControl="ngForm" class="form-control" required>
+        <option value="">select duration...</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </div>
+    <div class="form-group" [ngClass]="{ 'error' : !abstractControl.valid && abstractControl.dirty }">
+      <label for="abstract">Abstract:</label>
+      <em *ngIf="!abstractControl.valid && abstractControl.dirty">Required</em>
+      <textarea id="abstract" rows=3 ngControl="abstract" #abstractControl="ngForm" class="form-control" required placeholder="abstract..."></textarea>
+    </div>
+
+    <br />
+    <br />
+    <button type="submit" [disabled]="!newSessionForm.valid" class="btn btn-primary">Save</button>
+    <button type="button" (click)="cancelSession()" class="btn btn-default">Cancel</button>
+  </form>
+</div>
+
