@@ -27,11 +27,11 @@ export class EventService {
     }, 100);
     return emitter;
   }
+
+  updateEvent(eventData: any) {
+    // to be implemented later
+  }
   
-  // saveEvent(eventData: any) {
-  //   let found = EVENTS.find(event => event.id === id)
-        
-  // }
 }
 
 const EVENTS = [

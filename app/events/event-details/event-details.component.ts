@@ -28,8 +28,8 @@ export class EventDetailsComponent implements OnInit {
   }
 
   saveNewSession(session:Session) {
-    this.event.sessions.push(session)
-    // this.eventService.saveEvent(this.event)
+    this.event.sessions.push(session);
+    this.eventService.updateEvent(this.event);
     this.addMode = false
   }
 
