@@ -1,8 +1,10 @@
 <div>
   <div class="row" style=margin-top:10px; *ngFor="let session of visibleSessions">
     <div class="col-md-1">
-      <upvote (vote)="toggleVote(session)" 
-        [count]="session.voters.length" [voted]="userHasVoted(session)"></upvote>
+      <div *ngIf="auth.isAuthenticated()">
+        <upvote (vote)="toggleVote(session)" 
+          [count]="session.voters.length" [voted]="userHasVoted(session)"></upvote>
+      </div>
     </div>
     <div class="col-md-10" style="margin-left:10px;">
       <collapsible-well>
