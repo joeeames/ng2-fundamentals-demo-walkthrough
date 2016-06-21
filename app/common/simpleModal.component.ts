@@ -27,21 +27,22 @@ import { JQ_TOKEN } from './jQuery.service';
 export class SimpleModalComponent implements OnInit, AfterViewInit {
   @Input() title : string;
   @Input() elementId : string;
-  @Input() closeOnBodyClick : boolean;
+  @Input() closeOnBodyClick : string;
   private el: HTMLElement;
 
   @ViewChild('modalbody') bodyEl: ElementRef;
 
   constructor(el: ElementRef, @Inject(JQ_TOKEN) private $ : any) {
     this.el = el.nativeElement;
+    
   } 
   
   ngOnInit() {
-
+    console.log(this.closeOnBodyClick);
   }
 
   ngAfterViewInit() {
-    if(this.closeOnBodyClick) {
+    if(this.closeOnBodyClick.toLocaleLowerCase() === "true") {
       this.bodyEl.nativeElement.addEventListener('click', () => {
         this.$(`#${this.elementId}`).modal('hide');
       })
