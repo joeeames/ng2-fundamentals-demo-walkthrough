@@ -2,23 +2,27 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Session, DurationPipe } from '../shared/index';
 import { AuthService } from '../../users/auth.service';
 import { CollapsibleWellComponent } from '../../common/collapsible-well.component';
-
+import { UpvoteComponent } from './upvote.component';
+import { VoterService } from './voter.service';
 
 @Component({
   moduleId: module.id,
   selector: 'session-list',
   templateUrl: 'session-list.component.html',
   styles: ['collapsible-well h6 {margin-top:-5px; margin-bottom:10px }'],
-  directives: [CollapsibleWellComponent],
+  directives: [CollapsibleWellComponent, UpvoteComponent],
+  providers: [VoterService],
   pipes: [DurationPipe]
 })
 export class SessionListComponent {
   @Input() sessions: Session[];
   @Input() filterBy: string;
   @Input() sortBy: string;
+  @Input() eventId: number;
   visibleSessions: Session[] = [];
 
-  constructor(private auth: AuthService) {  }
+  constructor(private auth: AuthService,
+    private voterService: VoterService) {  }
 
   ngOnChanges() {
     if(this.sessions) {
@@ -38,6 +42,20 @@ export class SessionListComponent {
         return session.level.toLocaleLowerCase() === filter;
       })
     }
+  }
+
+  toggleVote(session: Session) {
+    if(this.userHasVoted(session)) {
+      this.voterService.deleteVoter(this.eventId, session, this.auth.currentUser.userName);
+    } else {
+      this.voterService.addVoter(this.eventId, session, this.auth.currentUser.userName)
+    }
+    if(this.sortBy === 'votes')
+        this.visibleSessions.sort(sortByVotesDesc)
+  }
+    
+  userHasVoted(session: Session) {
+    return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
   }
 }
 

@@ -34,11 +34,9 @@ export class SimpleModalComponent implements OnInit, AfterViewInit {
 
   constructor(el: ElementRef, @Inject(JQ_TOKEN) private $ : any) {
     this.el = el.nativeElement;
-    
   } 
   
   ngOnInit() {
-    console.log(this.closeOnBodyClick);
   }
 
   ngAfterViewInit() {
