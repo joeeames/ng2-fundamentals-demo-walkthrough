@@ -5,6 +5,7 @@ import { ProfileComponent } from './users/profile.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { LoginComponent } from './users/login.component';
 import { EventService } from './events/shared/event.service';
+import { ServerService } from './events/shared/server.service';
 import { TOASTR_TOKEN } from './common/toastr.service';
 import { AuthService } from './users/auth.service';
 
@@ -23,6 +24,7 @@ declare let toastr: Object;
   providers: [
     EventService,
     provide(TOASTR_TOKEN, {useValue: toastr}),
+    provide(ServerService, {useExisting: EventService}),
     AuthService,
     ROUTER_PROVIDERS
   ]
