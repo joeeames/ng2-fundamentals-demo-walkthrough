@@ -15,6 +15,7 @@ import { CollapsibleWellComponent } from '../../common/collapsible-well.componen
 export class SessionListComponent {
   @Input() sessions: Session[];
   @Input() filterBy: string;
+  @Input() sortBy: string;
   visibleSessions: Session[] = [];
 
   constructor(private auth: AuthService) {  }
@@ -22,6 +23,9 @@ export class SessionListComponent {
   ngOnChanges() {
     if(this.sessions) {
       this.filterSessions(this.filterBy);
+      this.sortBy === 'name'
+        ? this.visibleSessions.sort(sortByNameAsc)
+        : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
 
@@ -35,7 +39,14 @@ export class SessionListComponent {
       })
     }
   }
+}
 
+function sortByNameAsc(s1: Session, s2: Session) {
+  if(s1.name > s2.name) return 1
+  else if(s1.name === s2.name) return 0
+  else return -1
+}
 
-  
+function sortByVotesDesc(s1: Session, s2: Session) {
+  return s2.voters.length - s1.voters.length
 }

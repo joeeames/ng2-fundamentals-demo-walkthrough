@@ -16,7 +16,7 @@ import { Session } from '../shared/index';
 })
 export class CreateSessionComponent  {
   @Output() saveNewSession = new EventEmitter()
-  @Output() cancel = new EventEmitter()
+  @Output() cancelAddSession = new EventEmitter()
 
   constructor() {
     
@@ -29,6 +29,6 @@ export class CreateSessionComponent  {
   }
 
   cancelSession() {
-    this.cancel.emit(null)
+    this.cancelAddSession.emit(null)
   }
 }
