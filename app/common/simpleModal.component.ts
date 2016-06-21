@@ -4,7 +4,7 @@ import { JQ_TOKEN } from './jQuery.service';
 @Component({
   selector: 'simple-modal',
   template: `
-  <div id="simple-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div id="{{elementId}}" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -26,6 +26,7 @@ import { JQ_TOKEN } from './jQuery.service';
 })
 export class SimpleModalComponent {
   @Input() title : string;
+  @Input() elementId : string;
   private el: HTMLElement;
 
 
@@ -34,7 +35,9 @@ export class SimpleModalComponent {
   } 
   
   ngOnInit() {
-    
+    this.el.getElementsByClassName('modal-body')[0].addEventListener('click', () => {
+      this.$(`#${this.elementId}`).modal('hide');
+    })
   }
 
   
