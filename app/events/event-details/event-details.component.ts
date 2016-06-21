@@ -14,6 +14,7 @@ import { CreateSessionComponent } from './create-session.component';
 export class EventDetailsComponent implements OnInit {
   event: Event;
   addMode: boolean = false;
+  filterBy: string = 'all';
   
   constructor(private eventService: EventService,
     private routeParams: RouteParams) {}
