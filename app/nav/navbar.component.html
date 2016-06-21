@@ -16,8 +16,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li >
-              <a href="">Angular Connect</a>
+            <li *ngFor="let event of events">
+              <a [routerLink]="['Events/Event', {id: event.id}]">{{event.name}}</a>
             </li>
           </ul>
         </li>
@@ -33,9 +33,9 @@
           </li>
         </ul>
       </div>
-      <form id="searchForm"  class="navbar-form navbar-right"  >
+      <form id="searchForm" (ngSubmit)="searchSessions(searchTerm)"  class="navbar-form navbar-right"  >
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
+          <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search Sessions" >
         </div>
         <button class="btn btn-default" >
           Search

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventThumbnailComponent } from './event-thumbnail.component';
-import { ServerService } from './shared/server.service';
+import { EventService } from './shared/event.service';
 
 @Component({
   selector: 'events-list',
@@ -20,11 +20,11 @@ import { ServerService } from './shared/server.service';
 export class EventsListComponent implements OnInit {
   events: any[];
   
-  constructor(private serverService: ServerService) {
+  constructor(private eventService: EventService) {
   }  
   
   ngOnInit() {
-    this.serverService.getEvents().subscribe(events => {
+    this.eventService.getEvents().subscribe(events => {
       this.events = events;
     })
     

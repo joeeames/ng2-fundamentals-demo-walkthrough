@@ -44,6 +44,26 @@ export class EventService {
     }, 100);
     return emitter;
   }
+
+  searchSessions(searchTerm: string) {
+    var term = searchTerm.toLowerCase();
+    var results = [];
+    EVENTS.forEach(event => {
+      var matchingSessions = event.sessions.filter(session => session.name.toLowerCase().indexOf(term) > -1)
+      matchingSessions = matchingSessions.map((session:any) => {
+        session.eventId = event.id;
+        return session;
+      })
+      results = results.concat(matchingSessions);
+    })
+    console.log(results);
+
+    var emitter = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
+  }
   
 }
 
