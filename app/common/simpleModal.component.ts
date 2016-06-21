@@ -27,6 +27,7 @@ import { JQ_TOKEN } from './jQuery.service';
 export class SimpleModalComponent implements OnInit, AfterViewInit {
   @Input() title : string;
   @Input() elementId : string;
+  @Input() closeOnBodyClick : boolean;
   private el: HTMLElement;
 
   @ViewChild('modalbody') bodyEl: ElementRef;
@@ -40,9 +41,11 @@ export class SimpleModalComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.bodyEl.nativeElement.addEventListener('click', () => {
-      this.$(`#${this.elementId}`).modal('hide');
-    })
+    if(this.closeOnBodyClick) {
+      this.bodyEl.nativeElement.addEventListener('click', () => {
+        this.$(`#${this.elementId}`).modal('hide');
+      })
+    }
   }
 
   
