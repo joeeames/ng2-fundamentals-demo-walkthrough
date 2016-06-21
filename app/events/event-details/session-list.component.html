@@ -4,14 +4,13 @@
       
     </div>
     <div class="col-md-10" style="margin-left:10px;">
-      <div class="well">
-          <h4>{{session.name}}</h4>
+      <collapsible-well [title]="session.name">
           <h6>{{session.presenter}}</h6>
           <span>Duration: {{session.duration}}</span><br />
           <span>Level: {{session.level}}</span>
 
           <p>{{session.abstract}}</p>
-      </div>
+      </collapsible-well>
     </div>
   </div>
 </div>
