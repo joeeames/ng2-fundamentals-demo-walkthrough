@@ -31,6 +31,19 @@ export class EventService {
   updateEvent(eventData: any) {
     // to be implemented later
   }
+
+  createEvent(newEvent: any) {
+    const nextId =  Math.max.apply(null, EVENTS.map(s => s.id));
+    newEvent.id = nextId + 1
+    newEvent.sessions = [];
+    EVENTS.push(newEvent);
+
+    var emitter = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(newEvent);
+    }, 100);
+    return emitter;
+  }
   
 }
 

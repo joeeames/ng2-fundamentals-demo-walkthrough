@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, provide } from '@angular/core';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
 import { EventsComponent } from './events/events.component';
 import { ProfileComponent } from './users/profile.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { LoginComponent } from './users/login.component';
-
-
 import { EventService } from './events/shared/event.service';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN } from './common/toastr.service';
 import { AuthService } from './users/auth.service';
+
+declare let toastr: Object;
 
 @Component({
   selector: 'events-app',
@@ -22,7 +22,7 @@ import { AuthService } from './users/auth.service';
   ],
   providers: [
     EventService,
-    ToastrService,
+    provide(TOASTR_TOKEN, {useValue: toastr}),
     AuthService,
     ROUTER_PROVIDERS
   ]

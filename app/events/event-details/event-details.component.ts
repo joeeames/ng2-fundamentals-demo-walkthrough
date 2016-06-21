@@ -3,6 +3,7 @@ import { EventService, Event, Session } from '../shared/index';
 import { RouteParams } from '@angular/router-deprecated';
 import { SessionListComponent } from './session-list.component';
 import { CreateSessionComponent } from './create-session.component';
+import { TOASTR_TOKEN } from '../../common/toastr.service';
 
 @Component({
   moduleId: module.id,
@@ -36,6 +37,7 @@ export class EventDetailsComponent implements OnInit {
     this.event.sessions.push(session);
     this.eventService.updateEvent(this.event);
     this.addMode = false
+
   }
 
   cancelAddSession() {
