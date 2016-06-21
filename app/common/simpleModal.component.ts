@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ElementRef, Inject, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, AfterViewInit, ElementRef, Inject, ViewChild} from '@angular/core';
 import { JQ_TOKEN } from './jQuery.service';
 
 @Component({
@@ -24,23 +24,26 @@ import { JQ_TOKEN } from './jQuery.service';
   directives: [
   ]
 })
-export class SimpleModalComponent {
+export class SimpleModalComponent implements OnInit, AfterViewInit {
   @Input() title : string;
   @Input() elementId : string;
   private el: HTMLElement;
 
+  @ViewChild('modalbody') bodyEl: ElementRef;
 
   constructor(el: ElementRef, @Inject(JQ_TOKEN) private $ : any) {
     this.el = el.nativeElement;
   } 
   
   ngOnInit() {
-    this.el.getElementsByClassName('modal-body')[0].addEventListener('click', () => {
+
+  }
+
+  ngAfterViewInit() {
+    this.bodyEl.nativeElement.addEventListener('click', () => {
       this.$(`#${this.elementId}`).modal('hide');
     })
   }
-
-  
 
   
 }
