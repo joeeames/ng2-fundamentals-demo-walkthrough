@@ -6,9 +6,11 @@ import { NavBarComponent } from './nav/navbar.component';
 import { LoginComponent } from './users/login.component';
 import { EventService } from './events/shared/event.service';
 import { TOASTR_TOKEN } from './common/toastr.service';
+import { JQ_TOKEN } from './common/jQuery.service';
 import { AuthService } from './users/auth.service';
 
 declare let toastr: Object;
+declare let $: any;
 
 @Component({
   selector: 'events-app',
@@ -23,6 +25,7 @@ declare let toastr: Object;
   providers: [
     EventService,
     provide(TOASTR_TOKEN, {useValue: toastr}),
+    provide(JQ_TOKEN, { useValue: $}),
     AuthService,
     ROUTER_PROVIDERS
   ]
