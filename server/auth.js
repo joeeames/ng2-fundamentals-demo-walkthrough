@@ -15,7 +15,11 @@ exports.authenticate = function(req, res, next) {
 };
 
 exports.getCurrentIdentity = function(req, res, next) {
-  res.status(200).send(req.user);
+  if(req.user) {
+    res.status(200).send(req.user);
+  } else {
+    res.status(200).send({});
+  }
   res.end();
 }
 

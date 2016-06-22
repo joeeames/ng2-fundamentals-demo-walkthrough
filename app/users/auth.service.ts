@@ -38,9 +38,26 @@ export class AuthService {
     return !!this.currentUser;
   }
 
+  checkAuthenticationStatus() {
+    this.http.get('/api/currentIdentity')
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch(this.handleError)
+      .subscribe((currentUser:any) => {
+        if(!!currentUser.userName) {
+          this.currentUser = currentUser;
+        }
+      })
+  }
+
   updateCurrentUser(firstName: string, lastName: string) {
     console.log('updating', firstName, lastName);
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
+  }
+  
+  private handleError(error: Response) {
+    return Observable.throw(error.json().error || "Server Error");
   }
 }

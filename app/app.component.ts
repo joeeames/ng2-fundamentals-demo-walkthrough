@@ -1,5 +1,8 @@
-import { Component, provide } from '@angular/core';
+import { Component, provide, OnInit } from '@angular/core';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
+import { Http, Response } from '@angular/http';
+import { User } from './users/auth.service';
+import { Observable } from 'rxjs/Rx';
 import { EventsComponent } from './events/events.component';
 import { ProfileComponent } from './users/profile.component';
 import { NavBarComponent } from './nav/navbar.component';
@@ -35,8 +38,12 @@ declare let $: any;
   {path: '/profile', name: 'Profile', component: ProfileComponent},
   {path: '/login', name: 'Login', component: LoginComponent}
 ])
-export class AppComponent {
+export class AppComponent implements OnInit {
   
-  constructor() {}
+  constructor(private http: Http,
+    private auth: AuthService) {}
   
+  ngOnInit() {
+    this.auth.checkAuthenticationStatus();
+  }
 }
