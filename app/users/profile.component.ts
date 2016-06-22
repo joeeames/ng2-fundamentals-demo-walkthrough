@@ -28,8 +28,10 @@ export class ProfileComponent {
   
   saveProfile(formValues) {
     if(this.profileForm.valid) {
-      this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
-      this.toastr.success('Profile Saved');
+      this.auth.updateCurrentUser(formValues.firstName, formValues.lastName)
+        .subscribe(() => {
+          this.toastr.success('Profile Saved');
+        })
     }
   }
   

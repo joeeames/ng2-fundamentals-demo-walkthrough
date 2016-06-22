@@ -52,9 +52,15 @@ export class AuthService {
   }
 
   updateCurrentUser(firstName: string, lastName: string) {
-    console.log('updating', firstName, lastName);
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
+
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers });
+    
+    return this.http.put(`/api/users/${this.currentUser.id}`, 
+      JSON.stringify(this.currentUser), options)
+      .catch(this.handleError);
   }
   
   private handleError(error: Response) {
