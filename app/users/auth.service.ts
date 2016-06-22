@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 export interface User {
   id: number,
@@ -11,15 +13,25 @@ export interface User {
 export class AuthService {
   currentUser: User;
   
-  constructor() {}
+  constructor(private http: Http) {}
   
   loginUser(userName: string, password: string) {
-    this.currentUser = {
-      id: 1,
-      userName: "johnpapa",
-      firstName: "John",
-      lastName: "Papa"
-    }
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers });
+    let loginInfo = {username: userName, password: password};
+
+    return this.http.post('/api/login',
+      JSON.stringify(loginInfo), 
+      options
+    )
+    .do((resp:any) =>{
+      if(resp) {
+        this.currentUser = <User>resp.json().user;
+      }
+    })
+    .catch((error:Response) => {
+      return Observable.of(false);
+    })
   }
   
   isAuthenticated() {
