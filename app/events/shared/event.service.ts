@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class EventService {
@@ -26,36 +26,21 @@ export class EventService {
   }
 
   createEvent(newEvent: any) {
-    const nextId =  Math.max.apply(null, EVENTS.map(s => s.id));
-    newEvent.id = nextId + 1
-    newEvent.sessions = [];
-    EVENTS.push(newEvent);
-
-    var emitter = new EventEmitter(true);
-    setTimeout(() => {
-      emitter.emit(newEvent);
-    }, 100);
-    return emitter;
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers });
+    
+    var ret = this.http.post("/api/events", JSON.stringify(newEvent), options);
+    return ret.map((response: Response) => {
+        var returnedData = response.json();
+        return returnedData;
+    }).catch(this.handleError);
   }
 
   searchSessions(searchTerm: string) {
-    var term = searchTerm.toLowerCase();
-    var results = [];
-    EVENTS.forEach(event => {
-      var matchingSessions = event.sessions.filter(session => session.name.toLowerCase().indexOf(term) > -1)
-      matchingSessions = matchingSessions.map((session:any) => {
-        session.eventId = event.id;
-        return session;
-      })
-      results = results.concat(matchingSessions);
-    })
-    console.log(results);
-
-    var emitter = new EventEmitter(true);
-    setTimeout(() => {
-      emitter.emit(results);
-    }, 100);
-    return emitter;
+    return this.http.get(`/api/sessions/search?search=${searchTerm}`)
+      .map((response: Response) => {
+        return response.json();
+      }).catch(this.handleError);
   }
 
   private handleError(error: Response) {
