@@ -22,7 +22,14 @@ export class EventService {
   }
 
   updateEvent(eventData: any) {
-    // to be implemented later
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers });
+    
+    var ret = this.http.put("/api/events/" + eventData.id, JSON.stringify(eventData), options);
+    return ret.map((response: Response) => {
+        var returnedData = response.json();
+        return returnedData;
+    }).catch(this.handleError);
   }
 
   createEvent(newEvent: any) {

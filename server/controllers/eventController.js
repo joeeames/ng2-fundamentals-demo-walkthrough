@@ -53,7 +53,6 @@ exports.addVoter = function(req, res) {
 
 exports.createEvent = function(req, res) {
   var newEvent = req.body;
-  console.log('new event', newEvent);
   
   newEvent.id = nextId;
   nextId++;
@@ -62,6 +61,17 @@ exports.createEvent = function(req, res) {
   events.push(newEvent);
 
   res.send(newEvent);
+  res.end(); 
+}
+
+exports.updateEvent = function(req, res) {
+  var event = req.body;
+  console.log('updating event ', event);
+  
+  var index = events.findIndex(e => e.id === event.id)
+  events[index] = event
+
+  res.send(event);
   res.end(); 
 }
 
