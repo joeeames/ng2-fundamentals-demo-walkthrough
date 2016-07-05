@@ -2,9 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Session } from '../shared/index';
 
 @Component({
-  moduleId: module.id,
   selector: 'create-session',
-  templateUrl: './create-session.component.html',
+  templateUrl: '/app/events/event-details/create-session.component.html',
   styles: [`
     em {float:right; color:#E05C65; padding-left:10px;}
     .error input, .error select, .error textarea {background-color:#E3C3C5;}

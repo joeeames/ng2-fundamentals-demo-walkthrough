@@ -6,9 +6,8 @@ import { CreateSessionComponent } from './create-session.component';
 import { TOASTR_TOKEN } from '../../common/toastr.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'event-details',
-  templateUrl: 'event-details.component.html',
+  templateUrl: '/app/events/event-details/event-details.component.html',
   styles: ['a {cursor:pointer}'],
   directives: [SessionListComponent, CreateSessionComponent]
 })
