@@ -7,7 +7,7 @@ import { SimpleModalComponent } from '../common/simpleModal.component';
 
 @Component({
   selector: 'nav-bar',
-  templateUrl: '/app/nav/navbar.component.html',
+  templateUrl: 'app/nav/navbar.component.html',
   directives: [
     RouterLink,
     ModalTriggerDirective,
@@ -27,7 +27,7 @@ export class NavBarComponent {
 
   constructor(private auth: AuthService,
     private eventService: EventService) { 
-    
+    console.log('constructed');
   }
 
   ngOnInit() {
