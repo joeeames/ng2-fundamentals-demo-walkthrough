@@ -7,13 +7,12 @@ import {
 } from '@angular/core/testing';
 import { Component, Directive, provide } from '@angular/core';
 import { Location } from '@angular/common';
-import { NavBarComponent } from './navbar2.component';
 import { AuthService } from '../users/auth.service';
 import { EventService } from '../events/index';
-import { Router, RootRouter, RouterLink } from '@angular/router-deprecated';
+import { Router/*, RootRouter*/, RouterLink } from '@angular/router';
 import { ModalTriggerDirective } from '../common/modalTrigger.directive';
 import { SimpleModalComponent } from '../common/simpleModal.component';
-
+import { NavBarComponent } from './navbar.component';
 
 import { setBaseTestProviders } from '@angular/core/testing';
 import {

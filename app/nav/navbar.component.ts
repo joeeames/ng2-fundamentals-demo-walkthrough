@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { AuthService } from '../users/auth.service';
 import { EventService, Event } from '../events/index';
 import { ModalTriggerDirective } from '../common/modalTrigger.directive';
@@ -9,7 +9,7 @@ import { SimpleModalComponent } from '../common/simpleModal.component';
   selector: 'nav-bar',
   templateUrl: 'app/nav/navbar.component.html',
   directives: [
-    RouterLink,
+    ROUTER_DIRECTIVES,
     ModalTriggerDirective,
     SimpleModalComponent
   ],

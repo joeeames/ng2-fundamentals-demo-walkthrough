@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators } from '@angular/common';
 import { EventService, Event, Session } from './shared/index';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 function exactly2(control: any): {[key: string]: boolean} {
   return control.value.length !== 3 ? { "exactly3": true} : null

@@ -1,5 +1,5 @@
 import { Component, provide, OnInit } from '@angular/core';
-import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { User } from './users/auth.service';
 import { Observable } from 'rxjs/Rx';
@@ -29,15 +29,9 @@ declare let $: any;
     EventService,
     provide(TOASTR_TOKEN, {useValue: toastr}),
     provide(JQ_TOKEN, { useValue: $}),
-    AuthService,
-    ROUTER_PROVIDERS
+    AuthService
   ]
 })
-@RouteConfig([
-  {path: '/events/...', name: 'Events', component: EventsComponent, useAsDefault: true},
-  {path: '/profile', name: 'Profile', component: ProfileComponent},
-  {path: '/login', name: 'Login', component: LoginComponent}
-])
 export class AppComponent implements OnInit {
   
   constructor(private http: Http,

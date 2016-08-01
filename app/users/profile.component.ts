@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators } from '@angular/common';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
 

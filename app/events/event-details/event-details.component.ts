@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventService, Event, Session } from '../shared/index';
-import { RouteParams } from '@angular/router-deprecated';
+import { ActivatedRoute } from '@angular/router';
 import { SessionListComponent } from './session-list.component';
 import { CreateSessionComponent } from './create-session.component';
 import { TOASTR_TOKEN } from '../../common/toastr.service';
@@ -18,10 +18,12 @@ export class EventDetailsComponent implements OnInit {
   sortBy: string = 'votes'
   
   constructor(private eventService: EventService,
-    private routeParams: RouteParams) {}
+    private route: ActivatedRoute) {}
   
   ngOnInit() {
-    this.eventService.getEvent(+this.routeParams.get('id'))
+    this.route.params
+      .map(p => +p['id'])
+      .flatMap(id => this.eventService.getEvent(id))
       .subscribe(event => this.event = event)
   }
 

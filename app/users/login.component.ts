@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -20,13 +20,13 @@ export class LoginComponent {
         if(!resp) {
           this.loginInvalid = true;
         } else {
-          this.router.navigate(['Events']);
+          this.router.navigate(['/events']);
         }
       })
   }
   
   cancel() {
-    this.router.navigate(['Events']);
+    this.router.navigate(['/events']);
   }
    
 }

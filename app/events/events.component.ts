@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { EventsListComponent } from './events-list.component';
 import { CreateEventComponent } from './create-event.component';
 import { EventDetailsComponent } from './event-details/index';
-import { ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   selector: 'events-root',
@@ -13,10 +13,5 @@ import { ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
     ROUTER_DIRECTIVES
   ]
 })
-@RouteConfig([
-  {path: '/', name: 'Events', component: EventsListComponent, useAsDefault: true},
-  {path: '/:id', name: 'Event', component: EventDetailsComponent},
-  {path: '/new', name: 'CreateEvent', component: CreateEventComponent}
-])
 export class EventsComponent {
 }

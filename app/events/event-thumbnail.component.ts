@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {RouterLink} from '@angular/router-deprecated';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'event-thumbnail',
   template: `
-    <div [routerLink]="['Event', {id: event.id}]"
+    <div [routerLink]="['/events', event.id]"
        class="well thumbnail hoverwell">
       <h2 [innerText]="event.name"></h2>
       <span>Date:</span>

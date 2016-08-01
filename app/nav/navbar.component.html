@@ -1,15 +1,15 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" [routerLink]="['Events']">ngEvents</a>
+      <a class="navbar-brand" [routerLink]="['']">ngEvents</a>
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a [routerLink]="['Events']">All Events</a>
+          <a [routerLink]="['']">All Events</a>
         </li>
-        <li><a [routerLink]="['Events/CreateEvent']">Create Event</a></li>
+        <li><a [routerLink]="['/events/new']" >Create Event</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
             Events
@@ -17,7 +17,7 @@
           </a>
           <ul class="dropdown-menu">
             <li *ngFor="let event of events">
-              <a [routerLink]="['Events/Event', {id: event.id}]">{{event.name}}</a>
+              <a [routerLink]="['/events', event.id]">{{event.name}}</a>
             </li>
           </ul>
         </li>
@@ -26,10 +26,10 @@
         <ul class="nav navbar-nav">
           <li>
             <a *ngIf="auth.isAuthenticated()" class="navbar-brand" 
-              [routerLink]="['Profile']">
+              [routerLink]="['/profile']">
                 Welcome {{auth.currentUser.firstName}}
             </a>
-            <a *ngIf="!auth.isAuthenticated()" class="" [routerLink]="['Login']">Login</a>
+            <a *ngIf="!auth.isAuthenticated()" class="" [routerLink]="['login']">Login</a>
           </li>
         </ul>
       </div>
@@ -47,7 +47,7 @@
 
 <simple-modal closeOnBodyClick="true" elementId="searchResults" title="Matching Sessions">
   <div class="list-group">
-    <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['Events/Event', {id: session.eventId}]">{{session.name}}</a>
+    <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['events', session.eventId]">{{session.name}}</a>
   </div>
 </simple-modal>
 
