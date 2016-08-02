@@ -11,6 +11,8 @@ export const appRoutes: RouterConfig = [
   // {path: 'events/...', component: EventsComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
+  
+  {path: 'events/new', component: CreateEventComponent}, // gotta make sure to put this before the next route
   {
     path: 'events', 
     component: EventsListComponent, 
@@ -22,7 +24,6 @@ export const appRoutes: RouterConfig = [
     // ]
   },
   {path: 'events/:id', component: EventDetailsComponent},
-  {path: 'events/new', component: CreateEventComponent},
   {path: '', redirectTo: "/events", pathMatch: "full"}
 ]
 

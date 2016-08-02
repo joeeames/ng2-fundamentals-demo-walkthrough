@@ -21,9 +21,13 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute) {}
   
   ngOnInit() {
-    this.route.params
-      .map(p => +p['id'])
-      .flatMap(id => this.eventService.getEvent(id))
+    // this.route.params
+    //   .map(p => +p['id'])
+    //   .flatMap(id => this.eventService.getEvent(id))
+    //   .subscribe(event => this.event = event)
+
+    // same thing but with a snapshot instead of observable
+    this.eventService.getEvent(this.route.snapshot.params['id'])
       .subscribe(event => this.event = event)
   }
 

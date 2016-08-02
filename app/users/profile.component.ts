@@ -36,7 +36,7 @@ export class ProfileComponent {
   }
   
   cancel() {
-    this.router.navigate(['Events']);
+    this.router.navigate(['events']);
   }
    
 }

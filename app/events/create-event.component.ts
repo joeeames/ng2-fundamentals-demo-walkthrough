@@ -89,13 +89,13 @@ export class CreateEventComponent implements OnInit {
       console.log(newEvent)
       this.eventService.createEvent(newEvent)
         .subscribe(event => {
-          this.router.navigate(['Event', {id:event.id}]);
+          this.router.navigate(['/events', event.id]);
         })
     }
   }
   
   cancelEvent() {
-    this.router.navigate(['Events']);
+    this.router.navigate(['/events']);
   }
   
 
