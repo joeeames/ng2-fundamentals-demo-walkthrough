@@ -1,3 +1,2 @@
 make the current link active in the nav
-get programmatic routing working
 use child routes for adding a session
