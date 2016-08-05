@@ -9,6 +9,6 @@ import {  } from './users/';
 bootstrap(AppComponent, [
     HTTP_PROVIDERS, 
     APP_ROUTER_PROVIDER,
-    // disableDeprecatedForms(),
-    // provideForms()
+    disableDeprecatedForms(),
+    provideForms()
   ]);
