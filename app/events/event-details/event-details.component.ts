@@ -5,14 +5,12 @@ import { SessionListComponent } from './session-list.component';
 import { CreateSessionComponent } from './create-session.component';
 import { TOASTR_TOKEN } from '../../common/toastr.service';
 
-var childData : any = {}
 
 @Component({
   selector: 'event-details',
   templateUrl: '/app/events/event-details/event-details.component.html',
   styles: ['a {cursor:pointer}'],
   directives: [SessionListComponent, CreateSessionComponent, ROUTER_DIRECTIVES],
-  providers: [{provide: 'parentEvent', useValue: childData}]
 })
 export class EventDetailsComponent implements OnInit {
   event: Event;
@@ -37,8 +35,6 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.getEvent(this.eventId)
       .subscribe(event => {
         this.event = event
-        childData.event = this.event;
-        console.log('child data set', childData);
       })
   }
 
