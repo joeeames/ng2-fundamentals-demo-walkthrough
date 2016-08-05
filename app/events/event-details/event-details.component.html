@@ -46,7 +46,9 @@
     </div>
   </div>
 
-  <router-outlet></router-outlet>
+  <session-list [eventId]="event?.id" [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode && event?.sessions" [sessions]="event?.sessions"></session-list>
+  <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
+
   
   
 </div>

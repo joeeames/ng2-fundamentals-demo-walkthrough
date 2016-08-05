@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Inject } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Session, DurationPipe } from '../shared/index';
 import { AuthService } from '../../users/auth.service';
 import { CollapsibleWellComponent } from '../../common/collapsible-well.component';
@@ -21,8 +21,7 @@ export class SessionListComponent {
   visibleSessions: Session[] = [];
 
   constructor(private auth: AuthService,
-    private voterService: VoterService,
-    @Inject('parentEvent') private event) {  }
+    private voterService: VoterService) {  }
 
   ngOnChanges() {
     if(this.sessions) {
@@ -35,7 +34,6 @@ export class SessionListComponent {
 
   // using an immutable operation so as not to filter the source array
   filterSessions(filter) {
-    
     if(filter === 'all') {
       this.visibleSessions = this.sessions.slice(0);
     } else {
