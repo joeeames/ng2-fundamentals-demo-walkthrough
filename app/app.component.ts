@@ -1,5 +1,5 @@
 import { Component, provide, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { User } from './users/auth.service';
 import { Observable } from 'rxjs/Rx';
@@ -35,7 +35,7 @@ declare let $: any;
 export class AppComponent implements OnInit {
   
   constructor(private http: Http,
-    private auth: AuthService) {}
+    private auth: AuthService, private router: Router) {}
   
   ngOnInit() {
     this.auth.checkAuthenticationStatus();

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Session } from '../shared/index';
+import { EventService, Event, Session } from '../shared/index';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'create-session',
@@ -14,20 +15,34 @@ import { Session } from '../shared/index';
   `],
 })
 export class CreateSessionComponent  {
-  @Output() saveNewSession = new EventEmitter()
-  @Output() cancelAddSession = new EventEmitter()
+  event: Event;
+  eventId: number;
 
-  constructor() {
+  constructor(private eventService: EventService,
+    private router: Router,
+    private route: ActivatedRoute) {
     
+  }
+
+  ngOnInit() {
+    this.eventId = this.router.routerState.parent(this.route).snapshot.params['id'];
+    console.log('id', this.eventId);
+    this.eventService.getEvent(this.eventId)
+      .subscribe(event => this.event = event)
   }
 
   saveSession(session:Session) {
     session.voters = []
     session.duration = +session.duration
-    this.saveNewSession.emit(session)
+    const nextId =  Math.max.apply(0, this.event.sessions.map(s => s.id));
+    session.id = nextId + 1
+    this.event.sessions.push(session);
+    this.eventService.updateEvent(this.event)
+      .subscribe();
   }
 
   cancelSession() {
-    this.cancelAddSession.emit(null)
+    // route to the basic state
+    this.router.navigate(['']);
   }
 }

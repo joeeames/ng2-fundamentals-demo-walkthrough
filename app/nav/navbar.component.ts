@@ -27,7 +27,6 @@ export class NavBarComponent {
 
   constructor(private auth: AuthService,
     private eventService: EventService) { 
-    console.log('constructed');
   }
 
   ngOnInit() {

@@ -1,2 +1,4 @@
-make the current link active in the nav
 use child routes for adding a session
+use route guards for the profile page
+switch to new forms
+fix session searching

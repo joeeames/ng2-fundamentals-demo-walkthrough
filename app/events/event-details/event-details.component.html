@@ -45,7 +45,8 @@
       <a (click)="addSession()">Add Session</a>
     </div>
   </div>
+
+  <router-outlet (activate)="initChild($event)"></router-outlet>
   
-  <session-list [eventId]="event?.id" [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode && event?.sessions" [sessions]="event?.sessions"></session-list>
-  <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
+  
 </div>
