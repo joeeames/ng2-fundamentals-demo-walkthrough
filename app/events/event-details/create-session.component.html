@@ -2,21 +2,22 @@
 <div class="col-md-6">
   <form autocomplete="off" #newSessionForm="ngForm" (ngSubmit)="saveSession(newSessionForm.value)">
     <div class="form-group" [ngClass]="{ 'error' : !name.valid && name.dirty }" required>
+    <!--<div class="form-group" required>-->
       <label for="sessionName">Session Name:</label>
-      <!--<em *ngIf="!name.valid && name.dirty">Required</em>-->
-      <input id="sessionName" type="text" name="name" #name="ngModel" [(ngModel)]="name" class="form-control" required placeholder="session name..." />
+      <em *ngIf="!name.valid && name.dirty">Required</em>
+      <input id="name" #name="ngModel" type="text" name="name" [(ngModel)]="model.name" class="form-control" required placeholder="session name..." />
     </div>
-    <!--<div class="form-group" [ngClass]="{ 'error' : !presenter.valid && presenter.dirty }">
+    <div class="form-group" [ngClass]="{ 'error' : !presenter.valid && presenter.dirty }">
       <label for="eventDate">Presenter:</label>
       <em *ngIf="!presenter.valid && presenter.dirty">Required</em>
       <div style="position:relative">
-        <input id="presenter" type="text" [(ngModel)]="presenter" class="form-control" required placeholder="presenter..." />
+        <input id="presenter" #presenter="ngModel" name="presenter" type="text" [(ngModel)]="model.presenter" class="form-control" required placeholder="presenter..." />
       </div>
     </div>
     <div class="form-group" [ngClass]="{ 'error' : !duration.valid && duration.touched }">
       <label for="duration">Duration:</label>
       <em *ngIf="!duration.valid && duration.touched">Required</em>
-      <select [(ngModel)]="duration" class="form-control" required>
+      <select [(ngModel)]="model.duration" #duration="ngModel" name="duration" class="form-control" required>
         <option value="">select duration...</option>
         <option value="1">Half Hour</option>
         <option value="2">1 Hour</option>
@@ -27,7 +28,7 @@
     <div class="form-group" [ngClass]="{ 'error' : !level.valid && level.touched }">
       <label for="level">Level:</label>
       <em *ngIf="!level.valid && level.touched">Required</em>
-      <select [(ngModel)]="level" class="form-control" required>
+      <select [(ngModel)]="model.level" #level="ngModel" name="level" class="form-control" required>
         <option value="">select duration...</option>
         <option value="Beginner">Beginner</option>
         <option value="Intermediate">Intermediate</option>
@@ -37,8 +38,8 @@
     <div class="form-group" [ngClass]="{ 'error' : !abstract.valid && abstract.dirty }">
       <label for="abstract">Abstract:</label>
       <em *ngIf="!abstract.valid && abstract.dirty">Required</em>
-      <textarea id="abstract" rows=3 [(ngModel)]="abstract" class="form-control" required placeholder="abstract..."></textarea>
-    </div>-->
+      <textarea id="abstract" rows=3 name="abstract" [(ngModel)]="model.abstract" #abstract="ngModel" class="form-control" required placeholder="abstract..."></textarea>
+    </div>
 
     <br />
     <br />
