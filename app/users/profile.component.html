@@ -1,18 +1,17 @@
 <h1>Edit Your Profile {{auth.currentUser.firstName}}</h1>
 <hr>
 <div class="col-md-6">
-    <form autocomplete="off" [ngFormModel]="profileForm" (ngSubmit)="saveProfile(profileForm.value)">
-        <div class="form-group" [ngClass]="{ 'has-error' : !firstName.valid }">
+    <form autocomplete="off" [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)">
+        <div class="form-group" [ngClass]="{ 'has-error' : !profileForm.controls.firstName.valid }">
             <label for="firstName">First Name:</label>
-            <em *ngIf="!firstName.valid">Required</em>
-            <input id="firstName" type="text" ngControl="firstName" 
-            
+            <em *ngIf="!profileForm.controls.firstName.valid">Required</em>
+            <input id="firstName" type="text" formControlName="firstName" 
             class="form-control" placeholder="First Name..." />
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error' : !lastName.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error' : !profileForm.controls.lastName.valid }">
             <label for="lastName">Last Name:</label>
-            <em *ngIf="!lastName.valid">Required</em>
-            <input id="lastName" type="text" ngControl="lastName" 
+            <em *ngIf="!profileForm.controls.lastName.valid">Required</em>
+            <input id="lastName" type="text" formControlName="lastName" 
             class="form-control" placeholder="Last Name..." />
         </div>
         

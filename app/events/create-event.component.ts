@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators } from '@angular/common';
+import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventService, Event, Session } from './shared/index';
 import { Router } from '@angular/router';
 
@@ -18,49 +18,32 @@ function exactly2(control: any): {[key: string]: boolean} {
     .error ::-moz-placeholder { color: #999; }
     .error :ms-input-placeholder  { color: #999; }
   `],
-  directives: [FORM_DIRECTIVES]
+  directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class CreateEventComponent implements OnInit {
   newEvent: Event;
-  newEventForm: ControlGroup;
-  name: Control;
-  date: Control;
-  time: Control;
-  price: Control;
-  address: Control;
-  city: Control;
-  country: Control;
-  imageUrl: Control;
+  newEventForm: FormGroup;
   
   constructor(private eventService: EventService, 
       private builder: FormBuilder, private router: Router) {
-    this.name = new Control('', Validators.required);
-    this.date = new Control('', Validators.required);
-    this.time = new Control('', Validators.required);
-    this.price = new Control('', Validators.compose([Validators.required, Validators.pattern('\\d\+(\\.\\d{0,2})?')]));
-    this.address = new Control('', Validators.required);
-    this.city = new Control('', Validators.required);
-    this.country = new Control('', Validators.compose([Validators.required, Validators.pattern('[A-Z]{2}')]));
-    this.imageUrl = new Control('', Validators.required);
-    // this.country = new Control('', exactly2);
-    
-    this.newEventForm = builder.group({
-      name: this.name,
-      date: this.date,
-      time: this.time,
-      price: this.price,
-      location: builder.group({
-        address: this.address,
-        city: this.city,
-        country: this.country
-      }),
-      imageUrl: this.imageUrl,
-    })
   }
   
   ngOnInit() {
     this.newEvent = new Event();
     // TODO: is this needed?
+
+    this.newEventForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      time: new FormControl('', Validators.required),
+      price: new FormControl('', [Validators.required, Validators.pattern('\\d\+(\\.\\d{0,2})?')]),
+      location: new FormGroup({
+        address: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        country: new FormControl('', [Validators.required, Validators.pattern('[A-Z]{2}')])
+      }),
+      imageUrl: new FormControl('', Validators.required),
+    })
   }
   
   isLocationComplete(location) {

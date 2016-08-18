@@ -18,7 +18,7 @@ import { SimpleModalComponent } from '../common/simpleModal.component';
     #searchForm {margin-right:100px; } 
     .profile {font-size:15px}
     @media (max-width: 1200px) {#searchForm {display:none}}
-  `],
+  `], 
 })
 export class NavBarComponent {
   events: Event[];

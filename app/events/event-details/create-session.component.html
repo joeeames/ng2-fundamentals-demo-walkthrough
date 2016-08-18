@@ -2,7 +2,6 @@
 <div class="col-md-6">
   <form autocomplete="off" #newSessionForm="ngForm" (ngSubmit)="saveSession(newSessionForm.value)">
     <div class="form-group" [ngClass]="{ 'error' : !name.valid && name.dirty }" required>
-    <!--<div class="form-group" required>-->
       <label for="sessionName">Session Name:</label>
       <em *ngIf="!name.valid && name.dirty">Required</em>
       <input id="name" #name="ngModel" type="text" name="name" [(ngModel)]="model.name" class="form-control" required placeholder="session name..." />
