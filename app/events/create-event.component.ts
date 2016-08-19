@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventService, Event, Session } from './shared/index';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,6 @@ function exactly2(control: any): {[key: string]: boolean} {
     .error ::-moz-placeholder { color: #999; }
     .error :ms-input-placeholder  { color: #999; }
   `],
-  directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class CreateEventComponent implements OnInit {
   newEvent: Event;
@@ -80,6 +79,5 @@ export class CreateEventComponent implements OnInit {
   cancelEvent() {
     this.router.navigate(['/events']);
   }
-  
 
 }

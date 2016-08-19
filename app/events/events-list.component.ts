@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EventThumbnailComponent } from './event-thumbnail.component';
 import { EventService } from './shared/event.service';
 
 @Component({
@@ -15,7 +14,6 @@ import { EventService } from './shared/event.service';
     </div>
   </div>  
   `,
-  directives: [EventThumbnailComponent]
 })
 export class EventsListComponent implements OnInit {
   events: any[];

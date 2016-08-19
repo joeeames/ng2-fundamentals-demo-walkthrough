@@ -1,4 +1,7 @@
-use child routes for adding a session
 use route guards for the profile page
-switch to new forms
-fix session searching
+remove eventdetailsroutes, and create an eventsroutes instead
+
+
+
+use child routes for adding a session???
+

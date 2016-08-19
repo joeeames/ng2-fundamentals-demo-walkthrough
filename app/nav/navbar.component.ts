@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { AuthService } from '../users/auth.service';
 import { EventService, Event } from '../events/index';
-import { ModalTriggerDirective } from '../common/modalTrigger.directive';
-import { SimpleModalComponent } from '../common/simpleModal.component';
 
 @Component({
   selector: 'nav-bar',
   templateUrl: 'app/nav/navbar.component.html',
-  directives: [
-    ROUTER_DIRECTIVES,
-    ModalTriggerDirective,
-    SimpleModalComponent
-  ],
   styles: [`
     .nav.navbar-nav {font-size:15px} 
     #searchForm {margin-right:100px; } 

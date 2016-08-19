@@ -7,9 +7,5 @@ export const eventDetailsRoutes: RouterConfig = [
   { 
     path: 'events/:id', 
     component: EventDetailsComponent,
-    // children: [
-    //   { path: 'new-session', component: CreateSessionComponent },
-    //   { path: '', component: SessionListComponent }
-    // ]
   }
 ]

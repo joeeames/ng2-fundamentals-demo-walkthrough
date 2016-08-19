@@ -20,9 +20,7 @@ import { JQ_TOKEN } from './jQuery.service';
 `,
   styles: [`
     .modal-body { height: 250px; overflow-y: scroll; }
-  `],
-  directives: [
-  ]
+  `]
 })
 export class SimpleModalComponent implements OnInit, AfterViewInit {
   @Input() title : string;

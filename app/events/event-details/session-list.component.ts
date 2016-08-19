@@ -1,17 +1,12 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Session, DurationPipe } from '../shared/index';
+import { Session } from '../shared/index';
 import { AuthService } from '../../users/auth.service';
-import { CollapsibleWellComponent } from '../../common/collapsible-well.component';
-import { UpvoteComponent } from './upvote.component';
 import { VoterService } from './voter.service';
 
 @Component({
   selector: 'session-list',
   templateUrl: '/app/events/event-details/session-list.component.html',
   styles: ['collapsible-well h6 {margin-top:-5px; margin-bottom:10px }'],
-  directives: [CollapsibleWellComponent, UpvoteComponent],
-  providers: [VoterService],
-  pipes: [DurationPipe]
 })
 export class SessionListComponent {
   @Input() sessions: Session[];

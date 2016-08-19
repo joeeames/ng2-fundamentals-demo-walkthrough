@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'event-thumbnail',
@@ -19,10 +18,7 @@ import {RouterLink} from '@angular/router';
       <span>&nbsp;</span>
       <span>{{event.location.city}}, {{event.location.country}}</span>
     </div>
-  `,
-  directives: [
-    RouterLink
-  ]
+  `
 })
 export class EventThumbnailComponent {
   @Input() event: any;

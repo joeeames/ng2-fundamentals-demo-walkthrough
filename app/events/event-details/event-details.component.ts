@@ -1,15 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventService, Event, Session } from '../shared/index';
 import { ActivatedRoute } from '@angular/router';
-import { SessionListComponent } from './session-list.component';
-import { CreateSessionComponent } from './create-session.component';
 import { TOASTR_TOKEN } from '../../common/toastr.service';
 
 @Component({
   selector: 'event-details',
   templateUrl: '/app/events/event-details/event-details.component.html',
   styles: ['a {cursor:pointer}'],
-  directives: [SessionListComponent, CreateSessionComponent]
 })
 export class EventDetailsComponent implements OnInit {
   event: Event;
